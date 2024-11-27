@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: calendar-api-db
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=calendar
+    ports:
+      - 5432:5432
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  api:
+    container_name: calendar-api
+    build:
+      context: .
+    restart: always
+    env_file:
+      - .env.development
+    ports:
+      - 5007:5007
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+volumes:
+  pg-data:
+
+networks:
+  app-network:
+    driver: bridge
