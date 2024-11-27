@@ -55,15 +55,24 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "rootDir": "src/modules",
+    "testMatch": [
+      "**/modules/**/*.spec.ts",
+      "**/modules/**/*.test.ts"
+    ],
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!**/*.module.ts",
+      "!**/*.dto.ts",
+      "!**/*.repository.ts"
     ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "../../coverage",
+    "testEnvironment": "node",
+    "fakeTimers": {
+      "enableGlobally": true
+    }
   }
 }
