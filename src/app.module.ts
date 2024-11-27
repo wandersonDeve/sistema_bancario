@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AccountModule } from './modules/account/account.module';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { postgresConfig } from './database/data-source';
@@ -7,6 +8,7 @@ import { envConfig } from './configs/environments';
 
 @Module({
   imports: [
+    AccountModule,
     ConfigModule.forRoot(envConfig),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
