@@ -22,7 +22,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "orm:create": "npm run typeorm -- migration:create ./src/database/migrations/migrationName",
     "orm:run": "npm run typeorm -- migration:run  -d ./src/database/data-source.ts",
-    "orm:generate": "npm run typeorm -- migration:generate -d ./src/database/data-source.ts ./src/database/migrations/CreateTableAccount",
+    "orm:generate": "npm run typeorm -- migration:generate -d ./src/database/data-source.ts ./src/database/migrations/CreateRelationBetweenAccountAndTransactions",
     "orm:revert": "npm run typeorm -- migration:revert -d ./src/database/data-source.ts"
   },
   "dependencies": {
