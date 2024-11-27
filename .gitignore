@@ -141,4 +141,7 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+codiumai-config.json
+.codiumai.toml
+
 # End of https://www.toptal.com/developers/gitignore/api/node
