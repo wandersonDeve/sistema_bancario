@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { AccountRepository } from './repository/account.repository';
 import { CreateAccountDto } from './dto/account.dto';
 import { AccountEntity } from '../../database/entities/account.entity';
-import { transactionType } from './enums/transatiuon.enum';
+import { transactionType } from './constants/transatiuon.enum';
 
 @Injectable()
 export class AccountService {
