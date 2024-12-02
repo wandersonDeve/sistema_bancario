@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { TransactionModule } from './modules/transaction/transaction.module';
 import { AccountModule } from './modules/account/account.module';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -8,6 +9,7 @@ import { envConfig } from './configs/environments';
 
 @Module({
   imports: [
+    TransactionModule,
     AccountModule,
     ConfigModule.forRoot(envConfig),
     TypeOrmModule.forRootAsync({

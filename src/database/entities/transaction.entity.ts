@@ -4,6 +4,8 @@ import {
   Column,
   ManyToOne,
   CreateDateColumn,
+  Relation,
+  JoinColumn,
 } from 'typeorm';
 import { AccountEntity } from './account.entity';
 
@@ -24,11 +26,13 @@ export class TransactionEntity {
   @Column('decimal', { precision: 10, scale: 2 })
   amount: number;
 
-  @ManyToOne(() => AccountEntity, (account) => account.id, { nullable: true })
-  sourceAccount: AccountEntity;
+  @ManyToOne(() => AccountEntity, (account) => account.id, { nullable: true, eager: true })
+  @JoinColumn({ name: 'sourceAccountId' })
+  sourceAccount: Relation<AccountEntity>;
 
-  @ManyToOne(() => AccountEntity, (account) => account.id, { nullable: true })
-  targetAccount: AccountEntity;
+  @ManyToOne(() => AccountEntity, (account) => account.id, { nullable: true, eager: true })
+  @JoinColumn({ name: 'targetAccountId' })
+  targetAccount: Relation<AccountEntity>;
 
   @CreateDateColumn()
   created_at: Date;

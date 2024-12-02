@@ -13,9 +13,7 @@ export class AccountController {
   }
 
   @Get(':AccountNumber')
-  async getAccountByNumber(
-    @Param('AccountNumber') AccountNumber: string,
-  ): Promise<AccountEntity> {
-    return this.accountService.getAccountByNumber(+AccountNumber)
+  async getAccountByNumber(@Param('AccountNumber') AccountNumber: string) {
+    return this.accountService.getAccountByNumber(+AccountNumber);
   }
 }

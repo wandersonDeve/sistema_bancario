@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, Relation } from 'typeorm';
 import { TransactionEntity } from './transaction.entity';
 
 @Entity('tb_account')
@@ -13,10 +13,10 @@ export class AccountEntity {
   balance: number;
 
   @OneToMany(() => TransactionEntity, (transaction) => transaction.sourceAccount)
-  outgoingTransactions: TransactionEntity[];
+  outgoingTransactions: Relation<TransactionEntity[]>;
 
   @OneToMany(() => TransactionEntity, (transaction) => transaction.targetAccount)
-  incomingTransactions: TransactionEntity[];
+  incomingTransactions: Relation<TransactionEntity[]>;
 
   @CreateDateColumn()
   created_at: Date;
