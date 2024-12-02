@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
-  db:
-    container_name: calendar-api-db
+  bank_db:
+    container_name: bank_db
     image: postgres
     restart: always
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=calendar
+      - POSTGRES_DB=bank_database
     ports:
       - 5432:5432
     volumes:
@@ -16,17 +14,17 @@ services:
     networks:
       - app-network
 
-  api:
-    container_name: calendar-api
+  bank_api:
+    container_name: bank_api
     build:
       context: .
     restart: always
     env_file:
       - .env.development
     ports:
-      - 5007:5007
+      - 5007:3000
     depends_on:
-      - db
+      - bank_db
     networks:
       - app-network
 

@@ -1,0 +1,7 @@
+dist
+node_modules
+.husky
+.vscode
+.gitignore
+biome.json
+README.md
